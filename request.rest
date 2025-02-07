@@ -1,0 +1,54 @@
+# JWT authentication
+GET http://localhost:3000/userData
+Authorization: bearer-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiWWFzaXIgS2hhbiIsImlhdCI6MTczODk1MzIyNywiZXhwIjoxNzM4OTU2ODI3fQ.Bogk6xaOhEooYobd3uOw5xbfwirnkqnH6m172v7b7dY
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "name":"Yasir Khan"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# GET http://localhost:3000
+
+# ####
+
+# POST http://localhost:3000/users-write
+# Content-Type: application/json
+
+# {
+#   "name": "yasir",
+#   "password":"random"
+# }
+# ###
+
+# POST http://localhost:3000/user/login
+# Content-Type: application/json
+
+# {
+#   "name": "yasi2r",
+#   "password":"random"
+# }
