@@ -46,9 +46,17 @@ Content-Type: application/json
 
 ###
 
+POST  http://localhost:4000/auth/signUp
+Content-Type: application/json
+
+{
+    "name": "Yasir Khan",
+    "email": "r5@email.com",
+    "password": "entering"
+}
 
 
-
+###
 
 
 
