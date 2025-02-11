@@ -1,34 +1,44 @@
 const Events = require("../Models/Events");
 
 // A function that stores an event in the database using userId
-exports.createEvent = async (eventData, userId) => {
+const createEvent = async (eventData, userEmail) => {
   const { endTime, startTime, eventDate, eventName, eventNotes } = eventData;
 
   try {
-    const event = new Events({
-      endTime,
-      startTime,
-      eventDate,
-      eventName,
-      eventNotes,
-      userId, // Ensure userId is properly attached
-    });
-
-    await event.save(); // ✅ Wait for the database operation to complete
+    // Use findOneAndUpdate with upsert to handle both insert and update in one operation
+    const result = await Events.findOneAndUpdate(
+      { userEmail:userEmail  }, // Filter by userId
+      {
+        $push: {
+          eventData: {
+            endTime: endTime,
+            startTime: startTime,
+            eventDate: eventDate,
+            eventName: eventName,
+            eventNotes: eventNotes,
+          },
+        },
+      },
+      {
+        upsert: true, // Create a new document if it doesn't exist
+        new: true, // Return the updated document
+      }
+    );
 
     return {
       success: true,
       message: "Event successfully stored",
-      event, // Optional: Return the stored event object
+      event: result, // Return the updated or newly created document
     };
   } catch (error) {
-    console.error("Error creating event:", error); // ✅ Log for debugging
+    console.error("Error creating event:", error); // Log for debugging
 
     return {
       success: false,
       message: "Failed to store event",
-      error: error.message, // ✅ Return only the error message
+      error: error.message, // Return only the error message
     };
   }
 };
 
+module.exports = { createEvent };

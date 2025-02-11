@@ -1,115 +1,116 @@
-###
-POST  http://localhost:4000/auth/login
-Content-Type: application/json
-
-{
-    "email":"random2@email.com",
-    "password":"random"
-}
-###
-
-
-
-
-###
-# testing write event data api
-
-POST http://localhost:4000/create-event/store-event-data
-
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbmRvbTJAZW1haWwuY29tIiwiaWF0IjoxNzM5MjA4NTA4LCJleHAiOjE3MzkyMTIxMDh9.B_sngxJbtuuTbQIADzIQnsJxP6nMm48BH-dyg7NJEYg
-
-Content-Type: application/json
-
-
-
-{
-    "endTime":"22:06",
-    "startTime":"21:06",
-    "eventDate":"2024-11-21",
-    "eventName": "random Event",
-    "eventNotes": "wowowowowow"
-}
-
-
-
-###
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# # JWT authentication
-# GET http://localhost:3000/userData
-# Authorization: bearer-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiWWFzaXIgS2hhbiIsImlhdCI6MTczODk1MzIyNywiZXhwIjoxNzM4OTU2ODI3fQ.Bogk6xaOhEooYobd3uOw5xbfwirnkqnH6m172v7b7dY
-
-# ###
-# POST http://localhost:3000/login
-# Content-Type: application/json
-
-# {
-#     "name":"Yasir Khan"
-# }
-
-# ###
-# POST  http://localhost:4000/write-user-data
-# Content-Type: application/json
-
-# {
-#     "name":"yasir khan",
-#     "email":"random2@email.com",
-#     "password":"random"
-# }
-
-
-
-
-
-
-
 # ###
 # POST  http://localhost:4000/auth/login
 # Content-Type: application/json
 
 # {
-#     "email":"random2@email.com",
-#     "password":"random"
+#     "name": "Yasir Khan",
+#     "email": "r6@email.com",
+#     "password": "entering"
 # }
 # ###
 
 
-# POST  http://localhost:4000/auth/refresh-token
+
+
+# ###
+# # testing write event data api
+
+# POST http://localhost:4000/create-event/store-event-data
+
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbmRvbTJAZW1haWwuY29tIiwiaWF0IjoxNzM5Mjg3OTQwLCJleHAiOjE3MzkyOTE1NDB9.D1h_nH67hmvRgRKx7prkfpXmPSUR9q33VczajfTSZpI
+
 # Content-Type: application/json
 
+
+
 # {
-#     "refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E3NTljOTdiMjQwZTQ1Mjc2YmJhMGEiLCJpYXQiOjE3MzkwMzc2NzcsImV4cCI6MTczOTY0MjQ3N30.5UFo5dCjuxbo0tO_puM2LTw6ERuVRjIhoN2_vvhDha4"
+#     "endTime":"22:06",
+#     "startTime":"21:06",
+#     "eventDate":"2024-11-21",
+#     "eventName": "random Event",
+#     "eventNotes": "wowowowowow"
 # }
+
+
+
+# ###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # # JWT authentication
+# # GET http://localhost:3000/userData
+# # Authorization: bearer-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiWWFzaXIgS2hhbiIsImlhdCI6MTczODk1MzIyNywiZXhwIjoxNzM4OTU2ODI3fQ.Bogk6xaOhEooYobd3uOw5xbfwirnkqnH6m172v7b7dY
+
+# # ###
+# # POST http://localhost:3000/login
+# # Content-Type: application/json
+
+# # {
+# #     "name":"Yasir Khan"
+# # }
+
+# # ###
+# # POST  http://localhost:4000/write-user-data
+# # Content-Type: application/json
+
+# # {
+# #     "name":"yasir khan",
+# #     "email":"random2@email.com",
+# #     "password":"random"
+# # }
+
+
+
+
+
+
+
+# # ###
+# # POST  http://localhost:4000/auth/login
+# # Content-Type: application/json
+
+# # {
+# #     "email":"random2@email.com",
+# #     "password":"random"
+# # }
+# # ###
+
+
+# # POST  http://localhost:4000/auth/refresh-token
+# # Content-Type: application/json
+
+# # {
+# #     "refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E3NTljOTdiMjQwZTQ1Mjc2YmJhMGEiLCJpYXQiOjE3MzkwMzc2NzcsImV4cCI6MTczOTY0MjQ3N30.5UFo5dCjuxbo0tO_puM2LTw6ERuVRjIhoN2_vvhDha4"
+# # }
 
 # ###
 
@@ -118,7 +119,7 @@ Content-Type: application/json
 
 # {
 #     "name": "Yasir Khan",
-#     "email": "r5@email.com",
+#     "email": "r6@email.com",
 #     "password": "entering"
 # }
 
@@ -130,23 +131,23 @@ Content-Type: application/json
 
 
 
-# # GET http://localhost:3000
+# # # GET http://localhost:3000
 
-# # ####
+# # # ####
 
-# # POST http://localhost:3000/users-write
-# # Content-Type: application/json
+# # # POST http://localhost:3000/users-write
+# # # Content-Type: application/json
 
-# # {
-# #   "name": "yasir",
-# #   "password":"random"
-# # }
-# # ###
+# # # {
+# # #   "name": "yasir",
+# # #   "password":"random"
+# # # }
+# # # ###
 
-# # POST http://localhost:3000/user/login
-# # Content-Type: application/json
+# # # POST http://localhost:3000/user/login
+# # # Content-Type: application/json
 
-# # {
-# #   "name": "yasi2r",
-# #   "password":"random"
-# # }
+# # # {
+# # #   "name": "yasi2r",
+# # #   "password":"random"
+# # # }

@@ -43,14 +43,15 @@ exports.loginUser = async ({ email, password },res) => {
 };
 
 const generateToken = (user, res) => {
+  
     const accessToken = jwt.sign(
-        { userId: user.userId, email: user.email },
+        { email: user.email },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: '1h' } // Short expiration for security
     );
 
     const refreshToken = jwt.sign(
-        { userId: user.userId },
+        { email: user.email },
         process.env.REFRESH_TOKEN_SECRET,
         { expiresIn: '7d' } // Longer expiration
     );
