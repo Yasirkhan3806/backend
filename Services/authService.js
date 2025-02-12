@@ -7,12 +7,12 @@ const mongoose = require('mongoose')
 dotenv.config()
 
 
-exports.createUser = async (userData) => {
+exports.createUser = async (userData,res) => {
  const { name, email, password } = userData;
   // Find the user in the database
   const existingUser = await User.findOne({ email });
-  if (existingUser)
-    return {error:"User Exists , Please Login"}
+  if (existingUser) throw new Error("User already exist, Please login");
+  
 
   const hashPassword = await bcrypt.hash(password, 10);
   const userId = new mongoose.Types.ObjectId().toString();
@@ -27,7 +27,7 @@ exports.createUser = async (userData) => {
          });
  
          await user.save();
-
+         generateToken(userData,res)
   return user;
 };
 
@@ -47,7 +47,7 @@ const generateToken = (user, res) => {
     const accessToken = jwt.sign(
         { email: user.email },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: '1h' } // Short expiration for security
+        { expiresIn: '15m' } // Short expiration for security
     );
 
     const refreshToken = jwt.sign(
@@ -57,7 +57,6 @@ const generateToken = (user, res) => {
     );
     res.cookie('accessToken', accessToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
         maxAge: 15 * 60 * 1000, // 15 minutes
     });
@@ -65,7 +64,6 @@ const generateToken = (user, res) => {
     // Store refresh token in an HTTP-only cookie
     res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production', // Only send over HTTPS in production
         sameSite: 'Strict',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
@@ -86,14 +84,13 @@ exports.refreshingToken = async(req,res)=>{
     
         // Generate new access token
         const newAccessToken = generateToken(
-          { userId: user.userId, email: user.email },
+          { email: user.email },
           res
         );
     
         // Set new access token in cookies
         res.cookie("accessToken", newAccessToken, {
           httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
           sameSite: "strict",
           maxAge: 15 * 60 * 1000, // 15 minutes
         });
