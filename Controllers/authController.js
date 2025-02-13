@@ -17,14 +17,6 @@ exports.login = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-exports.token = async (req, res) => {
-  try {
-    const token = await req.cookies
-    res.status(200).json({ token });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
 
 
 exports.refreshToken = async(req,res)=>{

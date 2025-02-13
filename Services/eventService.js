@@ -41,4 +41,10 @@ const createEvent = async (eventData, userEmail) => {
   }
 };
 
-module.exports = { createEvent };
+const getEvent = async(email)=>{
+  const event = await Events.findOne({userEmail:email})
+  if(!event) throw new error('No Event Registered, Please register an event')
+  console.log(event)
+}
+
+module.exports = { createEvent,getEvent };

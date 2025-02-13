@@ -74,7 +74,7 @@ const generateToken = (user, res) => {
 
 
 exports.refreshingToken = async(req,res)=>{
-     const refreshToken = req.cookie.refreshToken;
+     const refreshToken = req.cookies.refreshToken;
       if (!refreshToken)
         return res.status(401).json({ message: "No refresh token" });
     
@@ -84,7 +84,7 @@ exports.refreshingToken = async(req,res)=>{
     
         // Generate new access token
         const newAccessToken = generateToken(
-          { email: user.email },
+          user,
           res
         );
     
