@@ -1,4 +1,4 @@
-const app = require('./app')
+const server = require('./app')
 const port = 4000
 const mongoose = require('mongoose')
 
@@ -11,6 +11,7 @@ async function main() {
 main().catch(err => console.log(err)); 
 
 
-app.listen(port,()=>{
+
+server.listen(port,()=>{
     console.log("listening to port:",port)
 })
