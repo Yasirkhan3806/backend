@@ -1,12 +1,13 @@
-const express = require('express')
-const router = express.Router()
-const eventControllers = require('../Controllers/eventControllers')
-const {authenticate} = require('../Middleware/authMiddleWare')
+const express = require('express');
+const router = express.Router();
+const { authenticate } = require('../Middleware/authMiddleWare');
 
-router.post('/store-event-data',authenticate,eventControllers.storeEventData)
-router.get('/get-event-data',authenticate,eventControllers.getEventData)
+//  Export a function that takes `io`
+module.exports = (io) => {
+  const eventControllers = require('../Controllers/eventControllers')(io); 
 
+  router.post('/store-event-data', authenticate, eventControllers.storeEventData);
+  router.get('/get-event-data', authenticate, eventControllers.getEventData);
 
-module.exports =(io)=>{
-return router
-} 
+  return router; // Router is returned
+};
