@@ -61,7 +61,6 @@ module.exports = (io) => {
      */
     getEvent: async (email) => {
       const event = await Events.findOne({ userEmail: email });
-        console.log(event)
       if (!event) throw new Error("No Event Registered, Please register an event");
 
       return event.eventData;

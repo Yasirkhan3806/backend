@@ -39,10 +39,12 @@ io.on("connection", (socket) => {
 });
 
 const authRoutes = require('./Routes/authRoutes');
+const userDataRoutes = require('./Routes/userDataRoutes')(io);
 const eventRoutes = require('./Routes/eventRoutes')(io);
 
 
 app.use("/auth",authRoutes)
 app.use("/create-event",eventRoutes)
+app.use("/user-data",userDataRoutes)
 
 module.exports = server
