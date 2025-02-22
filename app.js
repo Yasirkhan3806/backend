@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const authenticateSocket = require('./Middleware/socketAuth')
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const http = require('http')
@@ -18,8 +19,16 @@ app.use(cors({
 app.use(cookieParser())
 app.use(express.json())
 
+io.use(authenticateSocket);
+
 io.on("connection", (socket) => {
-    console.log("A user connected:", socket.id);
+    console.log("A user connected:");
+
+
+    socket.on("join-room", () => {
+        socket.join(socket.user.email); // 
+        console.log(`User with ${socket.user.email} has joined the room`);
+      });
 
     // Send a message to the connected client
     socket.emit("message", "Hello from the server!");
