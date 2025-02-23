@@ -18,19 +18,24 @@ return { getUserData: async(email)=>{
    
 },
 
- updateUserName : async(email,newName)=>{
-    /*
+updateUserName: async (email, newName) => {
+       /*
     parameters: email
     description: This function updates the user's name in the database based on the provided email address.
     return: true if update is successful, false otherwise
     */ 
     // Code to update the database and return true if successful, false otherwise
-    try{
-        await User.updateOne({ email }, { $set: { name: newName }});
+    try {
+        const response = await User.updateOne({ email }, { $set: { name: newName } });
+        console.log(response);
+        // Emit to the room (email-based room)
+        io.to(email).emit('nameUpdated', { success: true });
+
         return true;
-    }catch(e){
+    } catch (e) {
         throw new Error(e);
     }
-}}
+}
+}
 
 };

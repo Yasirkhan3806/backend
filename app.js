@@ -30,6 +30,10 @@ io.on("connection", (socket) => {
         console.log(`User with ${socket.user.email} has joined the room`);
       });
 
+    socket.on("nameUpdated", () => {
+        console.log("Name Updated")
+    })
+
     // Send a message to the connected client
     socket.emit("message", "Hello from the server!");
 

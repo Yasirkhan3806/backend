@@ -26,7 +26,7 @@ module.exports=(io)=>{
         return: response to the api call 
         */ 
         try{
-             const response = await userDataService.updateUserName(req.user.email,req.body.updatedName)
+             const response = await userDataService.updateUserName(req.user.email,req.body.name)
              res.status(201).json({ response });
        }catch(e){
            res.status(400).json({ message: e.message });
